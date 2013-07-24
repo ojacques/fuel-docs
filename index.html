@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=640" />
+
+    <link rel="stylesheet" href="stylesheets/core.css" media="screen"/>
+    <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-device-width:640px)"/>
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css"/>
+
+    <script type="text/javascript" src="javascripts/modernizr.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="javascripts/headsmart.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $('#main_content').headsmart()
+      })
+    </script>
+    <title>FUEL™ for OpenStack Documentation by paly-ch</title>
+  </head>
+
+  <body>
+    <a id="forkme_banner" href="https://github.com/paly-ch/fuel-docs">View on GitHub</a>
+    <div class="shell">
+
+      <header>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <h1>FUEL™ for OpenStack Documentation</h1>
+            <h2></h2>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+      </header>
+
+      <section id="downloads">
+        <span class="inner">
+          <a href="https://github.com/paly-ch/fuel-docs/zipball/master" class="zip"><em>download</em> .ZIP</a><a href="https://github.com/paly-ch/fuel-docs/tarball/master" class="tgz"><em>download</em> .TGZ</a>
+        </span>
+      </section>
+
+
+      <span class="banner-fix"></span>
+
+
+      <section id="main_content">
+        <h1>
+<a name="fuel-for-openstack-documentation" class="anchor" href="#fuel-for-openstack-documentation"><span class="octicon octicon-link"></span></a>FUEL™ for OpenStack Documentation</h1>
+
+<p>This repository contains the FUEL™ for OpenStack user and administrator guides.</p>
+
+<p>For more details, see the <a href="http://fuel.mirantis.com" title="FUEL™ for OpenStack portal">FUEL™ for OpenStack portal</a>.</p>
+
+<h1>
+<a name="prerequisites" class="anchor" href="#prerequisites"><span class="octicon octicon-link"></span></a>Prerequisites</h1>
+
+<p><a href="http://sphinx-doc.org/" title="Sphinx Documentation 
+Generator">Sphinx Documentation Generator</a> must be installed to build the documentation.</p>
+
+<p>To get started, you need to install Sphinx and necessary extensions:</p>
+
+<pre><code>  sudo easy_install -U Sphinx
+  sudo easy_install -U rst2pdf
+  sudo easy_install -U sphinxcontrib-blockdiag
+  sudo easy_install -U sphinxcontrib-actdiag
+  sudo easy_install -U sphinxcontrib-seqdiag
+  sudo easy_install -U sphinxcontrib-nwdiag
+</code></pre>
+
+<p>Plus you will need to install <a href="http://plantuml.sourceforge.net/" title="PlantUML">PlantUML</a> and <a href="http://www.imagemagick.org/" title="ImageMagick">ImageMagick</a>.</p>
+
+<p>To edit SVG images we use <a href="http://inkscape.org/" title="Inkscape">Inkscape</a> but you 
+can use any other tool you want.</p>
+
+<h1>
+<a name="building" class="anchor" href="#building"><span class="octicon octicon-link"></span></a>Building</h1>
+
+<p>To build a guide in HTML format, go to its directory and then run the <code>make</code> 
+command in that directory. For example:</p>
+
+<pre><code>make html
+</code></pre>
+
+<p>To generate the PDF file you shall do:</p>
+
+<pre><code>make pdf
+</code></pre>
+
+<p>You will find generated HTML documentation at:</p>
+
+<pre><code>_build/html
+</code></pre>
+
+<h1>
+<a name="contributing" class="anchor" href="#contributing"><span class="octicon octicon-link"></span></a>Contributing</h1>
+
+<p>We are welcome all people interested in helping our team to improve our 
+documentation, and there are no formal membership requirements. The best way to 
+contibute is to fork our repository, do your changes and send us Pull Request.</p>
+
+<p>There is also an IRC at <code>#openstack-fuel</code> on <code>irc.freenode.net</code> where you 
+can ask your questions and give your feedback.</p>
+
+<p>We welcome all types of contributions, from new ideas to documentation
+to testing to deployment scripts.</p>
+      </section>
+
+      <footer>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <p>this project by <a href="https://github.com/paly-ch">paly-ch</a> can be found on <a href="https://github.com/paly-ch/fuel-docs">GitHub</a></p>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+        <p>Generated with <a href="http://pages.github.com">GitHub Pages</a> using Merlot</p>
+        <span class="octocat"></span>
+      </footer>
+
+    </div>
+
+    
+  </body>
+</html>
