@@ -1,5 +1,6 @@
-Introduction to Fuel for OpenStack
-==================================
+===================================
+Introduction to Fuel™ for OpenStack
+===================================
 
 OpenStack is an extensible, versatile, and flexible cloud management platform. 
 By exposing its portfolio of cloud infrastructure services – compute, storage, 
@@ -16,7 +17,7 @@ requires a thoughtful combination of complex configuration choices. This can be
 very time consuming and requires a significant amount of studious documentation 
 to comprehend.
 
-Mirantis Fuel for OpenStack was created to eliminate exactly these problems. 
+Mirantis Fuel™ for OpenStack was created to eliminate exactly these problems. 
 This step-by-step guide takes you through this process of:
 
 * Configuring OpenStack and its supporting components into a robust cloud 
@@ -42,17 +43,17 @@ or VMware, as well as OpenStack itself, but you don't need to be an expert.
 
 The Fuel User Guide is organized as follows:
 
-* :ref:`About Fuel <About_Fuel>`, gives you an 
+* :ref:`About Fuel <About_Fuel>` gives you an 
   overview of Fuel and gives you a general idea of how it works.
 
-* :ref:`Reference Architecture <Reference-Architecture>`, provides a 
+* :ref:`Reference Architecture <Reference-Architecture>` provides a 
   general look at the components that make up OpenStack.
 
-* :ref:`Create a multi-node OpenStack cluster using Fuel Web <Fuel-Web-Cluster>`, 
+* :ref:`Create an OpenStack cluster using Fuel WebUI <Create-Cluster-WebUI>` 
   takes you step-by-step through the process of creating a high-availability 
   OpenStack cluster using Fuel Web. 
 
-* :ref:`Create a multi-node OpenStack cluster using Fuel <Create-Cluster>`, 
+* :ref:`Deploy an OpenStack cluster using Fuel CLI <Deploy-Cluster-CLI>`, 
   takes you step-by-step through the more advanced process of creating a 
   high-availability OpenStack cluster using the standard Fuel tools.
 

@@ -1,7 +1,8 @@
-.. _Create-Cluster:
+.. _Deploy-Cluster-CLI:
 
-Create a multi-node OpenStack cluster using Fuel
-================================================
+==========================================
+Deploy an OpenStack cluster using Fuel CLI
+==========================================
 
 .. _contents:: :local:
 

@@ -1,5 +1,5 @@
 Installing FuelWeb
-------------------
+==================
 
 .. contents:: :local:
 
@@ -46,7 +46,7 @@ simple, single-click installation.
 
 .. note:: 
     These scripts are not supported on Windows, but you can still test on 
-    VirtualBox by creating the VMs yourself. See "Manual Mode" for more 
+    VirtualBox by creating the VMs yourself. See :ref:Manual Mode" for more 
     information.
 
 The requirements for running FuelWeb on VirtualBox are:
@@ -98,6 +98,8 @@ Here is the example config file, with the values that you can adjust:
    :language: bash
    :linenos:
 
+.. _Manual_mode_webui:
+   
 Manual mode
 ^^^^^^^^^^^
 

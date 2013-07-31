@@ -1,7 +1,8 @@
-.. _Fuel-Web-Cluster:
+.. _Create-Cluster-WebUI:
 
-Create a multi-node OpenStack cluster using FuelWeb
-====================================================
+============================================
+Create an OpenStack cluster using Fuel WebUI
+============================================
 
 .. include:: /pages/installation-fuel-web/install.rst
 .. include:: /pages/installation-fuel-web/networks.rst

@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Sign in{% endblock %}
+{% block js %}
+  {{ super() }}
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('a.oid').click(function(event) {
+        event.preventDefault();
+        var url = $(this).attr('href');
+        $('form#login')
+          .find('input[name="openid"]')
+            .val(url).end()
+          .submit();
+      });
+    });
+  </script>
+{% endblock %}
+{% block body %}
+  <h1>Sign in with your OpenID</h1>
+
+  <p>In order to vote for comments, you need to log in with an OpenID.</p>
+
+  <p>Click on a provider logo to use one of these common providers:</p>
+
+  <p>
+  {%- for name, icon, url in oid_providers %}
+  <a href="{{ url }}" class="oid">
+    <img src="{{ url_for('static', filename='oid/' + icon) }}" alt="{{ name }}" />
+  </a>
+  {%- endfor %}
+  </p>
+
+  <p>You can also enter your OpenID:</p>
+  
+  <form id="login" action="" method=post>
+    {% if error %}<p class=error><strong>Error:</strong> {{ error }}</p>{% endif %}
+    <p>
+      OpenID:
+      <input type=text name=openid size=30>
+      <input type=submit value="Sign in">
+      <input type=hidden name=next value="{{ next }}">
+    </p>
+  </form>
+{% endblock %}

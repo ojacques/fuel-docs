@@ -1,30 +1,35 @@
 Galera cluster has no built-in restart or shutdown mechanism
-------------------------------------------------------------
+============================================================
 
 **Issue:**
+
 A Galera cluster cannot be simply started or stopped. It is designed to work continuously.
 
 **Workaround:**
+
 Galera, as high availability software, does not include any built-in full cluster shutdown or restart sequence. It is supposed to be running on a 24/7/365 basis. On the other hand, deploying, updating or restarting Galera may lead to different issues. This guide is intended to help avoid some of these issues. Regular Galera cluster startup includes a combination of the procedures described below. These procedures, with some differences, are performed by Fuel manifests.
  
 **Stopping a single Galera node**
+
 There is no dedicated Galera process - Galera works inside the MySQL server process. The MySQL server should be patched with Galera WSREP patch to be able to work as Galera cluster.
 
 All Galera stop steps listed below are automatically performed by the mysql init script supplied by Fuel installation manifests, so in most cases it should be enough to perform the first step only. In case even init script fails in some (rare, as we hope) circumstances, repeat step 2 manually.
 
 #. Run ``service mysql stop``.
-     Wait 15-30 seconds to ensure all MySQL processes are shut down.
+  Wait 15-30 seconds to ensure all MySQL processes are shut down.
 
 #. Run ``ps -ef | grep mysql`` and stop ALL(!) **mysqld** and **mysqld_safe** processes.
-     * Wait 20 seconds and run ``ps -ef | grep mysql`` again to see if any mysqld processes have restarted. 
-     * Stop or kill any new mysqld or mysqld_safe processes.
 
-     It is very important to stop all MySQL processes. Galera uses ``mysqld_safe`` and it may start additional MySQL processes. So even if you don't immediately see any running processes, additional processes may be already starting.      That is why we check running processes twice. ``mysqld_safe`` has a default timeout 15 seconds before processes restart.  If, after that time, ``mysqld`` processes are running, the node may be considered shut down.
+  * Wait 20 seconds and run ``ps -ef | grep mysql`` again to see if any mysqld processes have restarted. 
+  * Stop or kill any new mysqld or mysqld_safe processes.
+
+  It is very important to stop all MySQL processes. Galera uses ``mysqld_safe`` and it may start additional MySQL processes. So even if you don't immediately see any running processes, additional processes may be already starting.      That is why we check running processes twice. ``mysqld_safe`` has a default timeout 15 seconds before processes restart.  If, after that time, ``mysqld`` processes are running, the node may be considered shut down.
 
 If there was nothing to kill and all MySQL processes stopped after the ``service mysql stop`` command, the node may be considered shut down gracefully.
   
 **Stop the Galera cluster**
-A Galera cluster is a master-master replication cluster. Therefore, it is always in the process of synchronization.
+
+  A Galera cluster is a master-master replication cluster. Therefore, it is always in the process of synchronization.
 
 The recommended way to stop the cluster involves the following steps:
 
@@ -54,6 +59,7 @@ Repeat these instructions for each remaining node in the cluster.
 Remember which node you are going to shut down last -- ideally, it should be the primary node in the synced state. This is the node you should start first when you decide to continue cluster operation.
  
 **Starting Galera and creating a new cluster**
+
 Galera writes its state to file the file ``grastate.dat``, residing in the location specified in the ``wsrep_data_home_dir`` variable.  This variable defaults to ``mysql_real_data_home``, and Fuel OpenStack deployment manifests use this default location, creating the file at ``/var/lib/mysql/grastate.dat``.
 
 In the case of an unexpected cluster shutdown, this file can be useful for finding the node with the most recent commit. Simply compare the "UUID" values of ``grastat.dat`` from every node. The greater "UUID" value indicates which node has the latest commit.
@@ -169,9 +175,8 @@ on the primary node (first deployed OpenStack controller) and node list like::
 on every secondary controller. Therefore, it is a good idea to check these parameters after the deployment is finished.
 
 
-**Note:** 
-
-A Galera cluster is a very democratic system. As it is a master-master cluster, every primary node equals to other primary nodes. Primary nodes with the same sync state (same ``wsrep_cluster_state_uuid`` value) form the so called quorum - the majority of primary nodes with the same ``wsrep_cluster_state_uuid``. Normally, one of the controllers gets a new commit, increases its ``wsrep_cluster_state_uuid`` value and performs synchronization with other nodes. If one of primary controllers fails, the Galera cluster continues serving requests as long as the quorum exists. Exit of the primary controller from the cluster equals a failure, because after exit this controller has a new cluster ID and a ``wsrep_cluster_state_uuid`` value less than the same value on the working nodes. So 3 working primary controllers are the very minimal Galera cluster size. The recommended Galera cluster size is 6 controllers.
+.. note::
+    A Galera cluster is a very democratic system. As it is a master-master cluster, every primary node equals to other primary nodes. Primary nodes with the same sync state (same ``wsrep_cluster_state_uuid`` value) form the so called quorum - the majority of primary nodes with the same ``wsrep_cluster_state_uuid``. Normally, one of the controllers gets a new commit, increases its ``wsrep_cluster_state_uuid`` value and performs synchronization with other nodes. If one of primary controllers fails, the Galera cluster continues serving requests as long as the quorum exists. Exit of the primary controller from the cluster equals a failure, because after exit this controller has a new cluster ID and a ``wsrep_cluster_state_uuid`` value less than the same value on the working nodes. So 3 working primary controllers are the very minimal Galera cluster size. The recommended Galera cluster size is 6 controllers.
 
 Fuel deployment manifests with default settings deploy a non-recommended Galera configuration with 2 controllers only. This is suitable for testing purposes, but not for production deployments.
 
@@ -188,8 +193,7 @@ After these steps simply perform the **Start Galera and create a new cluster** p
 starting from the node with the most recent non-damaged replica.
 
 
-Useful links
-^^^^^^^^^^^^
+.. seealso::
 
 * Galera documentation from Galera authors:
 

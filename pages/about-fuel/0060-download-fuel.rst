@@ -1,5 +1,5 @@
 Download Fuel
--------------
+=============
 
 The first step in installing Fuel is to download the version appropriate for 
 your environment.

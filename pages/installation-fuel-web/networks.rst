@@ -216,11 +216,14 @@ accordingly. The diagram below shows an example configuration.
 
 FuelWeb operates with following logical networks:
 
-* **FuelWeb** network is used for internal FuelWeb communications only and PXE
-  booting (untagged on the scheme);
-* **Public** network is used to get access from virtual machines to outside, 
-  Internet or office network (vlan 101 on the scheme);
-* **Floating** network is used to get access to virtual machines from outside 
+FuelWeb network
+
+  Used for internal FuelWeb communications only and PXE booting (untagged on the scheme)
+
+.. topic:: Public network
+  Used to get access from virtual machines to outside, Internet or office network (vlan 101 on the scheme);
+
+* **Floating** network is used to get access to virtual machines from outside
   (shared L2-interface with **Public** network; in this case it's vlan 101);
 * **Management** network is used for internal OpenStack communications 
   (vlan 102 on the scheme);
